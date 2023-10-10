@@ -7,7 +7,7 @@ export const arrArea = [
 ]
 
 export const AreaToIdx = (Area) => {
-    return arrArea.findIndex((cont) => cont.toLowerCase() === Area.toLowerCase())
+    return arrArea.findIndex((Area) => Area.toLowerCase() === Area.toLowerCase())
 }
 
 export const idxToArea = (idx) => {

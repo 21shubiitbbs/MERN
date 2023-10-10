@@ -14,7 +14,7 @@ userController.get('/find/:id', async (req, res) => {
 })
 
 userController.put('/:id', verifyToken, async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     if (req.params.id === req.user.id.toString()) {
         try {
             if (req.body.password) {

@@ -7,7 +7,7 @@ import Option from "../../choose/Option";
 
 const Hero = () => {
   const [type, setType] = useState("0");
-  const [continent, setContinent] = useState("0");
+  const [Area, setArea] = useState("0");
   const [priceRange, setPriceRange] = useState("0");
   const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const Hero = () => {
   const handleSearch = () => {
     // navigating to properties
     navigate(
-      `/properties?type=${type}&continent=${continent}&priceRange=${priceRange}`
+      `/properties?type=${type}&Area=${Area}&priceRange=${priceRange}`
     );
   };
 
@@ -78,7 +78,7 @@ const Hero = () => {
               ]}
           ></Option>
           </select>
-          <select onChange={(e) => setContinent(e.target.value)}>
+          <select onChange={(e) => setArea(e.target.value)}>
             <Option
             data={[
               {
@@ -105,12 +105,6 @@ const Hero = () => {
               }
             ]}
             ></Option>
-            {/* <option disabled>Select Area</option>
-            <option value="0">Noida</option>
-            <option value="1">Greater noida</option>
-            <option value="2">Indrapuram</option>
-            <option value="3">Vaishali</option>
-            <option value="4">Gaur city</option> */}
           </select>
           <AiOutlineSearch
             className={classes.searchIcon}

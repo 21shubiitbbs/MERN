@@ -6,6 +6,7 @@ const app = express();
 const authController = require('./controllers/authController')
 const propertyController = require('./controllers/propertyController')
 const uploadController = require('./controllers/uploadController');
+const path = require('path');
 // const yachtController = require("./controllers/yachtController");
 const userController = require("./controllers/userController");
 const commentController = require("./controllers/commentController");
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use('/images', express.static('public/images'))
 
+app.use('/upload', express.static(path.join(__dirname, 'upload')));
 app.use("/auth", authController);
 app.use("/property", propertyController);
 // app.use("/yacht", yachtController);

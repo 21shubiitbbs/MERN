@@ -10,7 +10,7 @@ propertyController.get('/getAll', async (req, res) => {
     try {
         const properties = await Property.find({}).populate("currentOwner", '-password')
 
-        console.log(properties)
+        // console.log(properties)
 
         return res.status(200).json(properties)
     } catch (error) {
@@ -98,10 +98,10 @@ propertyController.get('/find/:id', async (req, res) => {
 
 // create estate
 propertyController.post('/',verifyToken,imageUpload, async (req, res) => {
-    // console.log(req.file)
+    //  console.log("yes",req.file)
     try {
         const newProperty = await Property.create({ ...req.body, currentOwner: req.user.id,image:req.file.path})
-
+        //  console.log("here")
         return res.status(201).json(newProperty)
     } catch (error) {
         console.log(error)
