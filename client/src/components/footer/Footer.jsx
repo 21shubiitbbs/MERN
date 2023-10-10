@@ -5,7 +5,7 @@ import { BsTwitter} from "react-icons/bs";
 const Footer = () => {
   return (
     <footer>
-      <div className={classes.wrapper}>
+      <div id="header-section" className={classes.wrapper}>
         <div className={classes.col}>
         <h2 style={{fontSize:"20px"}} className="text-blue-700 text-lg sm-450:text-2xl font-bold">About the app</h2>
           <p>

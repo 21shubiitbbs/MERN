@@ -8,7 +8,7 @@ import icon6 from '../../assets/icon-6.png'
 
 export default function Services() {
   return (
-    <div>
+    <div id="service-section">
         <section className="services">
           <h1 className="text-lg flex justify-center py-7">Our Services</h1>
           <div className="flex flex-row items-center justify-around">

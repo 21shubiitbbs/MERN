@@ -91,9 +91,9 @@ const Properties = () => {
         <div className={classes.options}>
           <select value={state?.type} name="type" onChange={handleState}>
             <option disabled>Select type</option>
-            <option value="0">1 BHK</option>
-            <option value="1">2 BHK</option>
-            <option value="3">3 BHK</option>
+            <option value="1">Builder</option>
+            <option value="2">Society</option>
+            <option value="3">House</option>
           </select>
           <select value={state?.priceRange} name="priceRange" onChange={handleState}>
             <option disabled>Select Price Range</option>

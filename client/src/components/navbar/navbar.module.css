@@ -136,15 +136,15 @@
 .listPropertyWrapper {
     position: relative;
     background-color: #fff;
-    height: 92.5vh;
+    /* height: 92.5vh; */
     width: 35vw;
     border-radius: 20px;
 }
 
 .listPropertyWrapper>h2 {
     text-align: center;
-    margin: 2.5rem 0;
-    margin-bottom: 3.5rem;
+    margin: 1.5rem 0;
+    margin-bottom: 2.5rem;
 }
 
 .listPropertyWrapper>form>div>label {
@@ -166,7 +166,9 @@
  }
 
 .listPropertyWrapper button {
+    height: 3.4em; ;
     margin-top: 0.5rem;
+    background-color: white;
 }
 
 .removeIcon {
@@ -216,14 +218,6 @@
     top: 0.5rem;
     right: 0.5rem;
     cursor: pointer;
-}
-
-.yachtBtn{
-    background-color: #f00;
-    color: #fff;
-    text-decoration: none;
-    padding: 0.25rem 0.75rem;
-    border-radius: 8px;
 }
 
 .myProfile{

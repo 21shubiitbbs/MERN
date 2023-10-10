@@ -88,9 +88,9 @@ const EditProperty = () => {
                     <input value={propertyDetails?.title} type="text" placeholder='Title' name="title" onChange={handleState} />
                     <select required name='type' onChange={handleState}>
                         <option disabled>Select Type</option>
-                        <option value='beach'>Beach</option>
-                        <option value='village'>Village</option>
-                        <option value='mountain'>Mountan</option>
+                        <option value='1'>Builder</option>
+                        <option value='2'>Society</option>
+                        <option value='3'>House</option>
                     </select>
                     <input value={propertyDetails?.desc} type="text" placeholder='Desc' name="desc" onChange={handleState} />
                     <select required name='continent' onChange={handleState}>

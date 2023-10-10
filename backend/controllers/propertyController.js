@@ -1,6 +1,8 @@
 const verifyToken = require('../middlewares/verifyToken')
+const imageUpload = require("../middlewares/imageupload");
 const Property = require('../models/Property')
-const User = require('../models/User')
+const User = require('../models/User');
+const { request } = require('express');
 const propertyController = require('express').Router()
 
 // get all
@@ -95,12 +97,14 @@ propertyController.get('/find/:id', async (req, res) => {
 
 
 // create estate
-propertyController.post('/', verifyToken, async (req, res) => {
+propertyController.post('/',verifyToken,imageUpload, async (req, res) => {
+    // console.log(req.file)
     try {
-        const newProperty = await Property.create({ ...req.body, currentOwner: req.user.id })
+        const newProperty = await Property.create({ ...req.body, currentOwner: req.user.id,image:req.file.path})
 
         return res.status(201).json(newProperty)
     } catch (error) {
+        console.log(error)
         return res.status(500).json(error)
     }
 })

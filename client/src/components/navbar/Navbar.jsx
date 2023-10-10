@@ -8,6 +8,7 @@ import { BsHouseDoor } from 'react-icons/bs'
 import { logout } from '../../redux/authSlice'
 import { request } from '../../util/fetchAPI'
 import { useEffect } from 'react'
+import Option from '../../choose/Option'
 
 const Navbar = () => {
   const [state, setState] = useState({})
@@ -22,9 +23,16 @@ const Navbar = () => {
 
   useEffect(() => {
     setState(prev => {
-      return {...prev, continent: 'europe', type: 'beach'}
+      return {...prev, Area: '', type: ''}
     })
   }, [])
+  const scrollToFooter = () => {
+    const headerSection = document.getElementById('header-section');
+    if (headerSection) {
+      headerSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
 
   // mobile
   const [showMobileNav, setShowMobileNav] = useState(false)
@@ -118,13 +126,17 @@ const Navbar = () => {
             Home
           </li>
           <li className={classes.listItem}>
+          <button onClick={scrollToFooter} className={classes.contactButton}>
             About
+          </button>
           </li>
           <li className={classes.listItem}>
             Featured
           </li>
           <li className={classes.listItem}>
-            Contacts
+            <button onClick={scrollToFooter} className={classes.contactButton}>
+              Contacts
+            </button>
           </li>
         </ul>
         <div className={classes.right}>
@@ -142,8 +154,8 @@ const Navbar = () => {
                   <span className={classes.logoutBtn} onClick={handleLogout}>Logout</span>
                   <Link  to={`/my-profile`} onClick={() => setShowModal(prev => !prev)} className={classes.myProfile}>My Profile</Link>
                   <Link onClick={() => setShowForm(true)} className={classes.list}>List your property</Link>
-                  <Link onClick={() => setShowModal(prev => !prev)} className={classes.yachtBtn} to={`/yachts`}>See yachts!</Link>
-                  <Link to={`/create-yacht`} onClick={() => setShowModal(prev => !prev)}>List your yacht</Link>
+                  {/* <Link onClick={() => setShowModal(prev => !prev)} className={classes.yachtBtn} to={`/yachts`}>See yachts!</Link>
+                  <Link to={`/create-yacht`} onClick={() => setShowModal(prev => !prev)}>List your yacht</Link> */}
                 </div>
               )}
             </>
@@ -159,20 +171,55 @@ const Navbar = () => {
             <form onSubmit={handleListProperty}>
               <input value={state?.title} type="text" placeholder='Title' name="title" onChange={handleState} />
               <select value={state?.type} required name='type' onChange={handleState}>
-                 <option disabled>Select Type</option>
-                 <option value='beach'>Beach</option>
-                 <option value='village'>Village</option>
-                 <option value='mountain'>Mountan</option>
+                <Option
+                data={[
+                  {
+                    value: "",
+                    name: "Select Type",
+                    disabled:true,
+                    selected:true 
+                  },
+                  {
+                    value: "1",
+                    name: "Builder"
+                  },
+                  {
+                    value: "2",
+                    name: "Society"
+                  },
+                  {
+                    value: "3",
+                    name: "House"
+                  }
+                ]}
+                ></Option>
+                 {/* <option disabled>Select Type</option>
+                 <option value='1'>Builder</option>
+                 <option value='2'>Society</option>
+                 <option value='3'>House</option> */}
               </select>
               <input value={state?.desc} type="text" placeholder='Desc' name="desc" onChange={handleState} />
-              <select value={state?.continent} required name='continent' onChange={handleState}>
-                 <option disabled>Select Continent</option>
-                 <option value='Europe'>Europe</option>
-                 <option value='Asia'>Asia</option>
-                 <option value='South America'>South America</option>
-                 <option value='North America'>North America</option>
-                 <option value='Australia'>Australia</option>
-                 <option value='Africa'>Africa</option>
+              <select value={state?.Area} required name='Area' onChange={handleState}>
+                 <Option data={[
+                  {
+                    value: "",
+                    name: "Select Area",
+                    disabled:true,
+                    selected:true 
+                  },{
+                  value:'1',
+                  name:"Noida"
+                  },{
+                  value:'2',
+                  name:"Greater Noida"
+                  },{
+                  value:'3',
+                  name:"Vaishali"
+                  },{
+                  value:'4',
+                  name:"Gaur city"
+                }]}></Option>
+                 
               </select>
               <input value={state?.price} type="number" placeholder='Price' name="price" onChange={handleState} />
               <input value={state?.sqmeters} type="number" placeholder='Sq. meters' name="sqmeters" onChange={handleState} />

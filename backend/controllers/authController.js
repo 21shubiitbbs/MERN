@@ -8,7 +8,7 @@ authController.post('/register', async (req, res) => {
     const isExisting = await User.findOne({ email: req.body.email })
 
     if (isExisting) {
-      throw new Error("Email is already taken by another user")
+      return response.json({"message":"Email is already taken by another user"})
     }
 
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
@@ -37,10 +37,14 @@ authController.post("/login", async (req, res) => {
       throw new Error('Wrong credentials. Try again!')
     }
 
-    const { password, ...others } = user._doc
+    // const {...others } = user._doc;
+    // console.log(user._doc);
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '8d' })
 
-    return res.status(200).json({ others, token })
+    return res.status(200).json({ 
+      others:user, 
+      token,
+    })
   } catch (error) {
     return res.status(500).json(error.message)
   }
